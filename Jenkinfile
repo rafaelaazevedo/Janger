@@ -1,0 +1,11 @@
+node {
+
+  def ENVIRONMENT = "qa"
+  
+  def image = "https://hub.docker.com/r/rafazzevedo/janger/"
+
+  sh "docker build --pull . -t ${image}:latest"
+  sh "docker push ${image}:latest"
+  sh "kubectl run microservices-tests -i --rm --namespace=${ENVIRONMENT} --restart=Never --image=${image}:latest --image-pull-policy=Always -- run /etc/newman/api/collections/collection.postman_collection.json -e /etc/newman/api/envs/${ENVIRONMENT}.postman_environment.json --reporters cli --reporter-cli-no-failures"
+  
+}
