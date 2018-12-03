@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "8e0609b1-c55b-4805-9b31-c7a6bb47c0e6",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6740c5c-640c-490c-8145-9576b94eac53",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response Code\", function () {",
+							"    pm.response.to.be.ok;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/test",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"test"
+					]
+				},
+				"description": "Request to test microservice"
+			},
+			"response": []
+		}
+	]
+}
