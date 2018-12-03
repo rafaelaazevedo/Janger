@@ -33,7 +33,7 @@ node {
         }
         
         stage('Tests') {
-          sh "kubectl run microservices-tests -i --rm --namespace=${ENVIRONMENT} --restart=Never --image=${IMAGE}:latest --image-pull-policy=Always -- run /etc/newman/api/collections/Collection.postman_collection.json -e /etc/newman/api/envs/${ENVIRONMENT}.postman_environment.json --reporters cli --reporter-cli-no-failures"
+          sh "kubectl run microservices-tests -i --rm --namespace=${ENVIRONMENT} --restart=Never --image=${IMAGE}:latest --image-pull-policy=Always -- run /etc/newman/api/collections/collection.postman_collection.json -e /etc/newman/api/envs/${ENVIRONMENT}.postman_environment.json --reporters cli --reporter-cli-no-failures"
         }
   }
 }
